@@ -1,0 +1,55 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="supplierID">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> supplierID </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> {{row.supplierID}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="supplierPartID">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> supplierPartID </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> {{row.supplierPartID}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="quantityBackOrdered">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> quantityBackOrdered </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> {{row.quantityBackOrdered}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="quantityOnOrder">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> quantityOnOrder </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> {{row.quantityOnOrder}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="itemNextAvailabilityDate">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> itemNextAvailabilityDate </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> {{row.itemNextAvailabilityDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="discontinued">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> discontinued </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> {{row.discontinued}} </td>
+    </ng-container>
+    <ng-container matColumnDef="productName">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> productName </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> {{row.productName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="productUrl">
+      <th class="text-center" mat-header-cell *matHeaderCellDef mat-sort-header> productUrl </th>
+      <td class="text-center" mat-cell *matCellDef="let row"> <img [src]="row.productUrl" class="product-img" alt="">
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
